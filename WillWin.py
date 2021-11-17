@@ -22,9 +22,10 @@ def WillWin(a, b, c, n):
         else:
             memo_i_minus_c = set([])
 
-        #print(i)
-        #print((memo_i_minus_a.union(memo_i_minus_b, memo_i_minus_c)))
-
+        print(i)
+        print(memo_i_minus_a)
+        print(memo_i_minus_b)
+        print(memo_i_minus_c)
         if memo_i_minus_a.union(memo_i_minus_b, memo_i_minus_c) == set([0]):
             memo[i] = memo[i - 1].union(memo[i - 2], memo[i - 3])
             continue
@@ -32,7 +33,7 @@ def WillWin(a, b, c, n):
             memo[i] = set([3])
         elif set([3]) == (memo_i_minus_a.union(memo_i_minus_b, memo_i_minus_c)):
             memo[i] = set([1])
-        elif set([1]) == (memo_i_minus_a.union(memo_i_minus_b, memo_i_minus_c)):
+        elif 1 in (memo_i_minus_a.union(memo_i_minus_b, memo_i_minus_c)):
             memo[i] = set([2])
         elif (1 in memo_i_minus_a or 1 in memo_i_minus_b or 1 in memo_i_minus_c) and (3 in memo_i_minus_a or 3 in memo_i_minus_b or 3 in memo_i_minus_c):
             memo[i] = set([1, 2])
@@ -57,13 +58,13 @@ def WillWin(a, b, c, n):
             #print(memo[n - a_b_c[i]])
     #print("MEMO")
     #print(memo[n])
-    if memo[n] != set([3]) and memo[n] != set([2]) and 1 in player2Win or 2 in player2Win or set([]) == player2Win:
+    '''if memo[n] != set([3]) and memo[n] != set([2]) and 1 in player2Win or 2 in player2Win or set([]) == player2Win:
         print("My algorithm: You cannot win with a fixed strategy")
         return 1
     else:
         print("My algorithm: You have a strategy to win!!!")
         return 0
-    '''
+    
     if 1 in player2Win or 3 in player2Win or set([]) == player2Win:
         print("My algorithm: You have a strategy to win!!!")
         return 0
@@ -71,14 +72,13 @@ def WillWin(a, b, c, n):
         print("My algorithm: You cannot win with a fixed strategy")
         return 1
     '''
-    '''
-    if memo[n] == set([3])
+    if memo[n] == set([3]):
         print("My algorithm: You cannot win with a fixed strategy")
         return 1
     else:
         print("My algorithm: You have a strategy to win!!!")
         return 0
-    '''
+    
 
 def solutionAlgorithm(a, b, c, n):
     memo = [True for i in range(n + 1)]
@@ -94,7 +94,7 @@ def solutionAlgorithm(a, b, c, n):
 
 
 def main():
-    for a in range(1, 10):
+    '''for a in range(1, 10):
         for b in range(1, 10):
             for c in range(1, 10):
                 for n in range(1, 10):
@@ -104,7 +104,12 @@ def main():
                         mySol = WillWin(a, b, c, n)
                         ansSol = solutionAlgorithm(a, b, c, n)
                         if mySol != ansSol:
-                            print("==============DIFFERENCE DETECTED================")
+                            print("==============DIFFERENCE DETECTED================")'''
+    a = int(input("a: "))
+    b = int(input("b: "))
+    c = int(input("c: "))
+    n = int(input("n: "))
+    WillWin(a,b,c,n)
 if __name__ == "__main__":
     main()
 
